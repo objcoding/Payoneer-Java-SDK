@@ -3,54 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.6.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.objcoding</groupId>
-    <artifactId>pay-center</artifactId>
+    <artifactId>fly-payoneer-pay</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>wxpay</module>
-        <module>alipay</module>
-        <module>payoneerpay</module>
-        <module>pay-center-demo</module>
+        <module>payoneer-pay-core</module>
+        <module>payoneer-pay-demo</module>
     </modules>
 
     <properties>
         <fastjson.version>1.2.41</fastjson.version>
-        <spring-boot-autoconfigure.version>1.5.9.RELEASE</spring-boot-autoconfigure.version>
-        <alipay-sdk.version>20171027120314</alipay-sdk.version>
-        <spring-boot-starter-web.version>1.5.3.RELEASE</spring-boot-starter-web.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-autoconfigure</artifactId>
-                <version>${spring-boot-autoconfigure.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.alipay</groupId>
-                <artifactId>alipay-sdk</artifactId>
-                <version>${alipay-sdk.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring-boot-starter-web.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -2,6 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.6.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.objcoding</groupId>
@@ -19,6 +27,7 @@
         <fastjson.version>1.2.41</fastjson.version>
         <spring-boot-autoconfigure.version>1.5.9.RELEASE</spring-boot-autoconfigure.version>
         <alipay-sdk.version>20171027120314</alipay-sdk.version>
+        <spring-boot-starter-web.version>1.5.3.RELEASE</spring-boot-starter-web.version>
     </properties>
 
     <dependencyManagement>
@@ -37,6 +46,11 @@
                 <groupId>com.alipay</groupId>
                 <artifactId>alipay-sdk</artifactId>
                 <version>${alipay-sdk.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-starter-web.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

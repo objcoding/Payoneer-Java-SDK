@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.objcoding</groupId>
-    <artifactId>fly-payoneer-pay</artifactId>
+    <artifactId>java-payoneer-pay</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>

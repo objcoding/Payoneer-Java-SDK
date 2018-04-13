@@ -1,12 +1,12 @@
-package com.objcoding.demo;
+package com.objcoding.payoneer.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class PayoneerPayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(PayoneerPayApplication.class, args);
 	}
 }

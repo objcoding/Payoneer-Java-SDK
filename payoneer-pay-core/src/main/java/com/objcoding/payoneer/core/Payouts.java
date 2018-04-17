@@ -1,12 +1,12 @@
 package com.objcoding.payoneer.core;
 
-
 /**
- * Payoneer 支付组件
+ * payoneer pay 转账组件（支出）
  * Auth: zch
  * Email: zhangchenghui.dev@gmail.com
- * Date: 2018/4/13.
+ * Date: 2018/4/18.
  */
-public class Pays {
+public class Payouts {
 
+    // TODO
 }

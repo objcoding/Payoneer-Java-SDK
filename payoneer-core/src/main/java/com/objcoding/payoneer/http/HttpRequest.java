@@ -26,7 +26,7 @@ public class HttpRequest {
             //打开连接
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             // 设置 basic auth 请求头
-            httpURLConnection.setRequestProperty(HttpHeaders.AUTHORIZATION, "Basic " + basicAuthCode);
+            httpURLConnection.setRequestProperty(HttpHeaders.AUTHORIZATION, basicAuthCode);
             httpURLConnection.setRequestMethod(HttpMethod.GET.name());
 
             if (200 == httpURLConnection.getResponseCode()) {
@@ -79,7 +79,7 @@ public class HttpRequest {
             httpURLConnection.setConnectTimeout(5000);
             httpURLConnection.setReadTimeout(5000);
             // 设置 basic auth 请求头
-            httpURLConnection.setRequestProperty(HttpHeaders.AUTHORIZATION, "Basic " + basicAuthCode);
+            httpURLConnection.setRequestProperty(HttpHeaders.AUTHORIZATION, basicAuthCode);
             httpURLConnection.setRequestMethod(HttpMethod.POST.name());
 
             httpURLConnection.connect();

@@ -1,49 +1,39 @@
-package com.objcoding.payoneer.model;
+package com.objcoding.payoneer.model.request;
 
-import java.io.Serializable;
+import com.objcoding.payoneer.model.enums.PayoneerField;
+
 import java.math.BigDecimal;
 
 /**
- * payoneer 支付请求对象
  * Auth: zch
  * Email: zhangchenghui.dev@gmail.com
- * Date: 2018/4/13.
+ * Date: 2018/4/19.
  */
-public class PayRequest implements Serializable {
-
-    /**
-     * 授权到商户系统里用于标识用户的id，类似于openid
-     */
-    private String payeeId;
+public class ChargeRequest extends Request {
 
     /**
      * 付款金额
+     * @see PayoneerField#AMOUNT
      */
     private BigDecimal amount;
 
     /**
      * 订单编号
+     * @see PayoneerField#CLIENTREFERENCEID
      */
     private String clientReferenceId;
 
     /**
      * 付款描述
+     * @see PayoneerField#DESCRIPTION
      */
     private String description;
 
     /**
      * 货币种类
+     * @see PayoneerField#CURRENCY
      */
     private String currency;
-
-
-    public String getPayeeId() {
-        return payeeId;
-    }
-
-    public void setPayeeId(String payeeId) {
-        this.payeeId = payeeId;
-    }
 
     public BigDecimal getAmount() {
         return amount;
@@ -76,4 +66,5 @@ public class PayRequest implements Serializable {
     public void setCurrency(String currency) {
         this.currency = currency;
     }
+
 }

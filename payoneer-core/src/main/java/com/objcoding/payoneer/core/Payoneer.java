@@ -1,5 +1,7 @@
 package com.objcoding.payoneer.core;
 
+import com.objcoding.payoneer.model.enums.CharsetType;
+
 /**
  * payoneer pay 核心类
  * <p>
@@ -7,7 +9,7 @@ package com.objcoding.payoneer.core;
  * Email: zhangchenghui.dev@gmail.com
  * Date: 2018/4/13.
  */
-public class PayoneerPay {
+public class Payoneer {
 
     /**
      * 测试地址
@@ -19,23 +21,13 @@ public class PayoneerPay {
      */
     public final static String RELEASE_DOMAIN = "https://api.payoneer.com/v2/programs/";
 
-    /**
-     * 响应状态码
-     */
-    public final static String CODE = "code";
-
-    /**
-     * 响应状态码
-     */
-    public final static String OUT_TRADE_NO = "client_reference_id";
-
 
     private String programId;
 
     /**
      * 商户网站使用的编码格式，如utf-8、gbk、gb2312等
      */
-    private String inputCharset = "UTF-8";
+    private String inputCharset = CharsetType.UTF8.name();
 
     /**
      * 是否是测试环境
@@ -131,13 +123,13 @@ public class PayoneerPay {
         this.authPassword = authPassword;
     }
 
-    public PayoneerPay(String programId, String authUsername, String authPassword) {
+    public Payoneer(String programId, String authUsername, String authPassword) {
         this.programId = programId;
         this.authUsername = authUsername;
         this.authPassword = authPassword;
     }
 
-    public PayoneerPay(String programId, String authUsername, String authPassword, String inputCharset, boolean isTest) {
+    public Payoneer(String programId, String authUsername, String authPassword, String inputCharset, boolean isTest) {
         this.programId = programId;
         this.inputCharset = inputCharset;
         this.isTest = isTest;
@@ -145,7 +137,7 @@ public class PayoneerPay {
         this.authPassword = authPassword;
     }
 
-    public PayoneerPay init() {
+    public Payoneer init() {
         charges = new Charges(this);
         payees = new Payees(this);
         notifies = new Notifies(this);

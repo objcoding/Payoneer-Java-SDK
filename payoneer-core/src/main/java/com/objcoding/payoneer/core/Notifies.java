@@ -8,8 +8,8 @@ package com.objcoding.payoneer.core;
  * Date: 2018/4/17.
  */
 public class Notifies extends Component {
-    public Notifies(PayoneerPay payoneerPay) {
-        super(payoneerPay);
+    public Notifies(Payoneer payoneer) {
+        super(payoneer);
     }
 
 

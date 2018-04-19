@@ -18,4 +18,6 @@ public enum CurType {
     SGD, // 新加坡元
     AUD // 澳大利亚元
 
+
+
 }

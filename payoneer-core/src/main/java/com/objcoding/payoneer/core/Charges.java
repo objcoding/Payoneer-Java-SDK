@@ -1,15 +1,16 @@
 package com.objcoding.payoneer.core;
 
 
-import com.objcoding.payoneer.model.ChargeRequest;
-import com.objcoding.payoneer.model.enums.PayoneerPayField;
+import com.objcoding.payoneer.model.enums.PayoneerField;
 import com.objcoding.payoneer.model.enums.TradeType;
+import com.objcoding.payoneer.model.request.ChargeRequest;
+import com.objcoding.payoneer.utils.RandomUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.objcoding.payoneer.utils.Preconditions.checkArgument;
-import static com.objcoding.payoneer.utils.Preconditions.checkNotNullAndEmpty;
+import static com.objcoding.payoneer.utils.Preconditions.*;
+import static com.objcoding.payoneer.utils.Util.converAmount;
 
 /**
  * Payoneer 付款组件
@@ -19,8 +20,8 @@ import static com.objcoding.payoneer.utils.Preconditions.checkNotNullAndEmpty;
  */
 public class Charges extends Component {
 
-    public Charges(PayoneerPay payoneerPay) {
-        super(payoneerPay);
+    public Charges(Payoneer payoneer) {
+        super(payoneer);
     }
 
     /**
@@ -66,22 +67,19 @@ public class Charges extends Component {
     private void checkPayParams(ChargeRequest request) {
         checkNotNull(request, "payoneer pay detail can't be null");
         checkNotNullAndEmpty(request.getPayeeId(), "payeeId");
-        checkNotNullAndEmpty(request.getClientReferenceId(), "clientReferenceId");
-        checkNotNullAndEmpty(request.getCurrency(), "clientReferenceId");
+//        checkNotNullAndEmpty(request.getClientReferenceId(), "clientReferenceId");
+        checkNotNullAndEmpty(request.getCurrency(), "currency");
         int amount = converAmount(request.getAmount());
         checkArgument(amount > 0, "totalFee must > 0");
     }
 
-    private void checkNotNull(ChargeRequest request, String s) {
-    }
-
     private Map<String, Object> buildPayParams(ChargeRequest request) {
-        Map<String, Object> params = new HashMap<>();
-        params.put(PayoneerPayField.PAYEEID.field(), request.getPayeeId());
-        params.put(PayoneerPayField.AMOUNT.field(), request.getAmount());
-        params.put(PayoneerPayField.CLIENTREFERENCEID.field(), request.getClientReferenceId());
-        params.put(PayoneerPayField.DESCRIPTION.field(), request.getDescription());
-        params.put(PayoneerPayField.CURRENCY.field(), request.getCurrency());
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put(PayoneerField.PAYEEID.field(), request.getPayeeId());
+        params.put(PayoneerField.AMOUNT.field(), request.getAmount());
+        params.put(PayoneerField.CLIENTREFERENCEID.field(), request.getClientReferenceId() == null ? RandomUtils.randomUUID() : request.getClientReferenceId());
+        params.put(PayoneerField.DESCRIPTION.field(), request.getDescription());
+        params.put(PayoneerField.CURRENCY.field(), request.getCurrency());
         return params;
     }
 }

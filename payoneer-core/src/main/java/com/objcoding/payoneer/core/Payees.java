@@ -1,7 +1,7 @@
 package com.objcoding.payoneer.core;
 
 
-import com.objcoding.payoneer.model.enums.PayoneerPayField;
+import com.objcoding.payoneer.model.enums.PayoneerField;
 import com.objcoding.payoneer.model.enums.TradeType;
 
 import java.util.HashMap;
@@ -18,8 +18,8 @@ import static com.objcoding.payoneer.utils.Preconditions.checkNotNullAndEmpty;
  */
 public final class Payees extends Component {
 
-    public Payees(PayoneerPay payoneerPay) {
-        super(payoneerPay);
+    public Payees(Payoneer payoneer) {
+        super(payoneer);
     }
 
     /**
@@ -43,8 +43,8 @@ public final class Payees extends Component {
     public Map<String, Object> getRegistrationLink(String payeeId) {
         checkPayeeId(payeeId);
         String url = getURL(TradeType.REGISTRATION);
-        Map<String, Object> parmas = new HashMap<>();
-        parmas.put(PayoneerPayField.PAYEEID.field(), payeeId);
+        Map<String, Object> parmas = new HashMap<String, Object>();
+        parmas.put(PayoneerField.PAYEEID.field(), payeeId);
         return doPost(url, parmas);
     }
 

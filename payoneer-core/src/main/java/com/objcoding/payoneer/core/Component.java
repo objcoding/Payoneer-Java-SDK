@@ -1,9 +1,7 @@
 package com.objcoding.payoneer.core;
 
-import com.alibaba.fastjson.JSONObject;
 import com.objcoding.payoneer.model.enums.TradeType;
 
-import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Map;
@@ -16,10 +14,10 @@ import java.util.Map;
  */
 public class Component {
 
-    protected PayoneerPay payoneerPay;
+    protected Payoneer payoneer;
 
-    public Component(PayoneerPay payoneerPay) {
-        this.payoneerPay = payoneerPay;
+    public Component(Payoneer payoneer) {
+        this.payoneer = payoneer;
     }
 
     public Map<String, Object> doPost(String url, Map<String, Object> params) {
@@ -40,11 +38,10 @@ public class Component {
         return null;
     }
 
-    /**
-     * json to map
-     */
-    private Map<String, Object> toMap(String response) {
-        return JSONObject.parseObject(response, Map.class);
+    private String doExecute(String url, String reqBody, int connectTimeoutMs, int readTimeoutMs) {
+
+        // TODO
+        return null;
     }
 
     /**
@@ -52,22 +49,12 @@ public class Component {
      */
     private String encodeAuthHeader() {
         return Base64.getEncoder()
-                .encodeToString((payoneerPay.getAuthUsername() + ":" + payoneerPay.getAuthPassword())
+                .encodeToString((payoneer.getAuthUsername() + ":" + payoneer.getAuthPassword())
                         .getBytes(StandardCharsets.UTF_8));
     }
 
-    /**
-     * 元转分
-     *
-     * @param amount 元的金额
-     * @return 分的金额
-     */
-    protected int converAmount(BigDecimal amount) {
-        return amount.multiply(new BigDecimal(100)).setScale(0, BigDecimal.ROUND_HALF_UP).intValue();
-    }
-
     protected String getURL(TradeType type) {
-        return (payoneerPay.isTest() ? PayoneerPay.SANDBOX_DOMAIN : PayoneerPay.RELEASE_DOMAIN) +
-                payoneerPay.getProgramId() + "/" + type.getMethod();
+        return (payoneer.isTest() ? Payoneer.SANDBOX_DOMAIN : Payoneer.RELEASE_DOMAIN) +
+                payoneer.getProgramId() + "/" + type.getMethod();
     }
 }

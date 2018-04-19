@@ -25,7 +25,7 @@ public class Util {
     /**
      * json to map
      */
-    private Map<String, Object> toMap(String response) {
+    public static Map<String, Object> toMap(String response) {
         return JSONObject.parseObject(response, Map.class);
     }
 }

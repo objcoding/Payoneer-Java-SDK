@@ -1,9 +1,14 @@
 package com.objcoding.payoneer.core;
 
+import com.alibaba.fastjson.JSONObject;
+import com.objcoding.payoneer.http.HttpRequest;
 import com.objcoding.payoneer.model.enums.TradeType;
+import com.objcoding.payoneer.utils.UriVariables;
+import com.objcoding.payoneer.utils.Util;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,35 +25,39 @@ public class Component {
         this.payoneer = payoneer;
     }
 
-    public Map<String, Object> doPost(String url, Map<String, Object> params) {
-
-        // TODO
-        return null;
-    }
-
-    public Map<String, Object> doPost(String url, Object... uriVariables) {
-
-        // TODO
-        return null;
-    }
-
     public Map<String, Object> doGet(String url, Object... uriVariables) {
+        url = UriVariables.getUri(url, uriVariables);
+        String basicAuthCode = getBasicAuthCode();
+        return this.getRequest(url, basicAuthCode);
+    }
 
-        // TODO
+    public Map<String, Object> doPost(String url, Map<String, Object> params) {
+        String basicAuthCode = getBasicAuthCode();
+        String reqBody = JSONObject.toJSONString(params);
+        return this.postRequest(url, basicAuthCode, reqBody);
+    }
+
+    private Map<String, Object> getRequest(String url, String basicAuthCode) {
+        String response = HttpRequest.getRequest(url, basicAuthCode);
+        if (response != null) {
+            return Util.toMap(response);
+        }
         return null;
     }
 
-    private String doExecute(String url, String reqBody, int connectTimeoutMs, int readTimeoutMs) {
-
-        // TODO
+    private Map<String, Object> postRequest(String url, String basicAuthCode, String reqBody) {
+        String response = HttpRequest.postRequest(url, basicAuthCode, reqBody);
+        if (response != null) {
+            return Util.toMap(response);
+        }
         return null;
     }
 
     /**
      * 构建 basic 请求头
      */
-    private String encodeAuthHeader() {
-        return Base64.getEncoder()
+    private String getBasicAuthCode() {
+        return "Basic " + Base64.getEncoder()
                 .encodeToString((payoneer.getAuthUsername() + ":" + payoneer.getAuthPassword())
                         .getBytes(StandardCharsets.UTF_8));
     }

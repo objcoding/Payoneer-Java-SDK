@@ -45,7 +45,9 @@ public class Charges extends Component {
     public Map<String, Object> cancelCharge(String clientReferenceId) {
         checkClientReferenceId(clientReferenceId);
         String url = getURL(TradeType.CHARGE_CANCEL);
-        return doPost(url, clientReferenceId);
+        Map<String, Object> params = new HashMap<>();
+        params.put(PayoneerField.CLIENTREFERENCEID.field(), clientReferenceId);
+        return doPost(url, params);
     }
 
     /**
@@ -57,7 +59,9 @@ public class Charges extends Component {
     public Map<String, Object> chargeStatus(String clientReferenceId) {
         checkClientReferenceId(clientReferenceId);
         String url = getURL(TradeType.CHARGE_STATUS);
-        return doPost(url, clientReferenceId);
+        Map<String, Object> params = new HashMap<>();
+        params.put(PayoneerField.CLIENTREFERENCEID.field(), clientReferenceId);
+        return doPost(url, params);
     }
 
     private void checkClientReferenceId(String clientReferenceId) {

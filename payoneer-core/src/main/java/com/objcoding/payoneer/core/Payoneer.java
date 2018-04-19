@@ -59,29 +59,10 @@ public class Payoneer {
      */
     private Notifies notifies;
 
-    public Notifies getNotifies() {
-        return notifies;
-    }
-
-    public void setNotifies(Notifies notifies) {
-        this.notifies = notifies;
-    }
-
-    public Charges getCharges() {
-        return charges;
-    }
-
-    public void setCharges(Charges charges) {
-        this.charges = charges;
-    }
-
-    public Payees getPayees() {
-        return payees;
-    }
-
-    public void setPayees(Payees payees) {
-        this.payees = payees;
-    }
+    /**
+     * 转账组件（支出）
+     */
+    private Payouts payouts;
 
     public String getProgramId() {
         return programId;
@@ -142,5 +123,22 @@ public class Payoneer {
         payees = new Payees(this);
         notifies = new Notifies(this);
         return this;
+    }
+
+    public Notifies notifies() {
+        return notifies;
+    }
+
+
+    public Charges charges() {
+        return charges;
+    }
+
+    public Payees payees() {
+        return payees;
+    }
+
+    public Payouts payouts() {
+        return payouts;
     }
 }

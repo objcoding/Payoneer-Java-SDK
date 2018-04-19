@@ -42,7 +42,7 @@ public class PayoneerHelper {
      * @return 授权状态
      */
     public Map<String, Object> getPayeeStatus(String payeeId) {
-        return payoneer.getPayees().getPayeeStatus(payeeId);
+        return payoneer.payees().getPayeeStatus(payeeId);
     }
 
     /**
@@ -52,7 +52,7 @@ public class PayoneerHelper {
      * @return 授权页面
      */
     public Map<String, Object> getRegistrationLink(String payeeId) {
-        return payoneer.getPayees().getRegistrationLink(payeeId);
+        return payoneer.payees().getRegistrationLink(payeeId);
     }
 
     /**
@@ -62,7 +62,7 @@ public class PayoneerHelper {
      * @return 授权页面
      */
     public Map<String, Object> getPayeeDetails(String payeeId) {
-        return payoneer.getPayees().getPayeeDetails(payeeId);
+        return payoneer.payees().getPayeeDetails(payeeId);
     }
 
 
@@ -75,7 +75,7 @@ public class PayoneerHelper {
      * @return 付款信息
      */
     public Map<String, Object> charge(ChargeRequest request) {
-        return payoneer.getCharges().charge(request);
+        return payoneer.charges().charge(request);
     }
 
     /**
@@ -85,7 +85,7 @@ public class PayoneerHelper {
      * @return 付款信息
      */
     public Map<String, Object> cancelCharge(String clientReferenceId) {
-        return payoneer.getCharges().cancelCharge(clientReferenceId);
+        return payoneer.charges().cancelCharge(clientReferenceId);
     }
 
 

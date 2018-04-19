@@ -6,27 +6,28 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.objcoding</groupId>
-    <artifactId>java-payoneer-pay</artifactId>
+    <artifactId>Payoneer-Java-SDK</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>payoneer-pay-core</module>
-        <module>payoneer-pay-demo</module>
+        <module>payoneer-core</module>
+        <module>payoneer-demo</module>
     </modules>
 
-    <name>java-payoneer-pay</name>
-    <description>这是一个 Java 版本的 payoneer 支付组件</description>
-    <url>https://github.com/objcoding/java-payoneer-pay</url>
+    <name>Payoneer-Java-SDK</name>
+    <description>这是一个轻量级 Java 版本 payoneer 支付组件</description>
+    <url>https://github.com/objcoding/Payoneer-Java-SDK</url>
 
     <developers>
         <developer>
             <name>zch</name>
             <email>zhangchenghui.dev0@gmail.com</email>
-            <url>https://github.com/objcoding/java-payoneer-pay</url>
         </developer>
     </developers>
 
     <properties>
+        <sdk.version>1.0.0</sdk.version>
+        <!-- 3rd -->
         <fastjson.version>1.2.41</fastjson.version>
     </properties>
 
@@ -41,20 +42,21 @@
     </dependencyManagement>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.2</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
     </build>

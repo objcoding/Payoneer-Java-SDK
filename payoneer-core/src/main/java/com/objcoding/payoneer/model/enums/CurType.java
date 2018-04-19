@@ -19,5 +19,4 @@ public enum CurType {
     AUD // 澳大利亚元
 
 
-
 }

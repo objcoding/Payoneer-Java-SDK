@@ -14,6 +14,7 @@ public class Request implements Serializable {
 
     /**
      * 授权到商户系统里用于标识用户的id，类似于openid
+     *
      * @see PayoneerField#PAYEEID
      */
     private String payeeId;

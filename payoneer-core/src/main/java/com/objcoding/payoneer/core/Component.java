@@ -8,7 +8,6 @@ import com.objcoding.payoneer.utils.Util;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.HashMap;
 import java.util.Map;
 
 /**

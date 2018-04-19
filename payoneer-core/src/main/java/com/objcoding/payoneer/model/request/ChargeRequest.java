@@ -13,24 +13,28 @@ public class ChargeRequest extends Request {
 
     /**
      * 付款金额
+     *
      * @see PayoneerField#AMOUNT
      */
     private BigDecimal amount;
 
     /**
      * 订单编号
+     *
      * @see PayoneerField#CLIENTREFERENCEID
      */
     private String clientReferenceId;
 
     /**
      * 付款描述
+     *
      * @see PayoneerField#DESCRIPTION
      */
     private String description;
 
     /**
      * 货币种类
+     *
      * @see PayoneerField#CURRENCY
      */
     private String currency;

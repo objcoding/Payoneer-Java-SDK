@@ -110,14 +110,14 @@ public class Preconditions {
         return builder.toString();
     }
 
-    public static void checkNotNullAndEmpty(String checking, String field){
-        if (checking == null || "".equals(checking)){
+    public static void checkNotNullAndEmpty(String checking, String field) {
+        if (checking == null || "".equals(checking)) {
             throw new IllegalArgumentException(field + CAN_NOT_NULL_EMPTY);
         }
     }
 
-    public static void checkNotNullAndEmpty(Collection<?> checking, String field){
-        if (checking == null || checking.isEmpty()){
+    public static void checkNotNullAndEmpty(Collection<?> checking, String field) {
+        if (checking == null || checking.isEmpty()) {
             throw new IllegalArgumentException(field + CAN_NOT_NULL_EMPTY);
         }
     }

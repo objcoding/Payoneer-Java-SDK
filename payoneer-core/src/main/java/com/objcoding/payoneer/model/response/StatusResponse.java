@@ -2,7 +2,7 @@ package com.objcoding.payoneer.model.response;
 
 /**
  * 状态响应对象
- *
+ * <p>
  * Auth: zch
  * Email: zhangchenghui.dev@gmail.com
  * Date: 2018/4/18.

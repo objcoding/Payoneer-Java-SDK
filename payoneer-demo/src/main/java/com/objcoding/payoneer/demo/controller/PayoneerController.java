@@ -26,7 +26,7 @@ public class PayoneerController {
      *
      * @param payeeId 授权到商户系统里用于标识用户的id，类似于openid
      */
-    @PostMapping("/payee/{payeeId}/status/")
+    @PostMapping(value = "/payee/{payeeId}/status/")
     public Map<String, Object> getPayeeStatus(@PathVariable String payeeId) {
         return payoneerHelper.getPayeeStatus(payeeId);
     }

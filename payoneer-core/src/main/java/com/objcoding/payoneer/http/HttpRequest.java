@@ -21,6 +21,7 @@ public class HttpRequest {
     public static String getRequest(String strUrl, String basicAuthCode) {
         InputStream in = null;
         BufferedReader br = null;
+        StringBuilder sb = null;
         try {
             URL url = new URL(strUrl.trim());
             //打开连接
@@ -34,13 +35,12 @@ public class HttpRequest {
                 in = httpURLConnection.getInputStream();
                 // 装饰成缓冲流
                 br = new BufferedReader(new InputStreamReader(in, CharsetType.UTF8.getName()));
-                final StringBuilder sb = new StringBuilder();
+                sb = new StringBuilder();
                 // 读取
                 String line;
                 while ((line = br.readLine()) != null) {
-                    sb.append(line).append("\n");
+                    sb.append(line);
                 }
-                return sb.toString();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -60,7 +60,7 @@ public class HttpRequest {
                 }
             }
         }
-        return null;
+        return sb.toString();
     }
 
     /**
@@ -70,6 +70,7 @@ public class HttpRequest {
         InputStream in = null;
         OutputStream out = null;
         BufferedReader br = null;
+        StringBuilder sb = null;
         try {
             URL httpUrl = new URL(strUrl.trim());
             HttpURLConnection httpURLConnection = (HttpURLConnection) httpUrl.openConnection();
@@ -80,7 +81,6 @@ public class HttpRequest {
             httpURLConnection.setReadTimeout(5000);
             // 设置 basic auth 请求头
             httpURLConnection.setRequestProperty(HttpHeaders.AUTHORIZATION, basicAuthCode);
-            httpURLConnection.setRequestMethod(HttpMethod.POST.name());
 
             httpURLConnection.connect();
             out = httpURLConnection.getOutputStream();
@@ -91,12 +91,12 @@ public class HttpRequest {
             // 开始获取内容
             in = httpURLConnection.getInputStream();
             br = new BufferedReader(new InputStreamReader(in, CharsetType.UTF8.getName()));
-            final StringBuilder sb = new StringBuilder();
-            String line = null;
+            sb = new StringBuilder();
+            String line;
             while ((line = br.readLine()) != null) {
-                sb.append(line).append("\n");
+                sb.append(line);
             }
-            return sb.toString();
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -122,6 +122,6 @@ public class HttpRequest {
                 }
             }
         }
-        return null;
+        return sb.toString();
     }
 }
